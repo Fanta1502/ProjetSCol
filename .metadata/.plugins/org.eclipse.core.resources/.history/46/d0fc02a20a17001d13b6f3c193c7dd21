@@ -1,0 +1,13 @@
+package tn.dksoft.accesscontrol.persistence.mappers;
+
+import org.mapstruct.InjectionStrategy;
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
+import tn.dksoft.accesscontrol.persistence.dto.RoleDto;
+import tn.dksoft.accesscontrol.persistence.entities.Role;
+
+@Component
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+public interface RoleMapper extends GenericMapper<RoleDto, Role> {
+}
+

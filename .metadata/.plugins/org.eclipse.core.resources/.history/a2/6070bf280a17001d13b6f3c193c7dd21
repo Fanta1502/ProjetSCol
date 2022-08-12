@@ -1,0 +1,18 @@
+package tn.dksoft.accesscontrol.persistence.dto;
+
+import lombok.*;
+
+import java.io.Serializable;
+import java.util.Collection;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
+public class RoleDto implements Serializable{
+    private static final long serialVersionUID = 1L;
+    private Long id;
+    private String name;
+    private Collection<PrivilegeDto> privileges;
+}

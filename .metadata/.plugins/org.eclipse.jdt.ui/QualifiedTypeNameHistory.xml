@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.example.demo.DAO.UserDAO"/>
+    <fullyQualifiedTypeName name="com.backend.model.User"/>
+    <fullyQualifiedTypeName name="com.backend.filter.JwtRequestFilter"/>
+    <fullyQualifiedTypeName name="com.backend.util.JwtUtil"/>
+    <fullyQualifiedTypeName name="com.backend.service.MyUserDetailsService"/>
+    <fullyQualifiedTypeName name="payload.response.AuthenticationResponse"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+    <fullyQualifiedTypeName name="com.backend.DAO.UserDAO"/>
+    <fullyQualifiedTypeName name="com.backend.DAO.RoleDAO"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="tn.dksoft.accesscontrol.persistence.entities.Role"/>
+    <fullyQualifiedTypeName name="com.backend.persistence.dto.RoleDto"/>
+    <fullyQualifiedTypeName name="com.backend.persistence.Constants.Constants"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="lombok.EqualsAndHashCode.Include"/>
+    <fullyQualifiedTypeName name="lombok.NonNull"/>
+    <fullyQualifiedTypeName name="javax.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.backend.persistence.entities.Role"/>
+    <fullyQualifiedTypeName name="tn.dksoft.accesscontrol.security.services.UserDetailsServiceImpl"/>
+    <fullyQualifiedTypeName name="com.backend.security.services.UserDetailsServiceImpl"/>
+    <fullyQualifiedTypeName name="com.backend.security.services.UserDetailsImpl"/>
+    <fullyQualifiedTypeName name="payload.response.JwtResponse"/>
+    <fullyQualifiedTypeName name="payload.request.LoginRequest"/>
+    <fullyQualifiedTypeName name="com.backend.persistence.entities.User"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.backend.BackendApplication"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+</qualifiedTypeNameHistroy>
