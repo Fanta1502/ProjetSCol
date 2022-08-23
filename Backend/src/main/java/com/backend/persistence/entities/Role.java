@@ -40,7 +40,7 @@ public class Role extends TimestampEntity implements Serializable {
     private String name;
     @ManyToMany(mappedBy = "roles")
     @JsonIgnore
-    private Collection<User> users;
+    private Collection<Utilisateur> users;
 	private boolean isDeleted = false;
 
 

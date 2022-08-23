@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.payload.request.LoginRequest;
 import com.backend.payload.response.EmailNotification;
-import com.backend.persistence.dto.UserDto;
-import com.backend.persistence.entities.User;
+import com.backend.persistence.dto.UtilisateurDto;
+import com.backend.persistence.entities.Utilisateur;
 import com.backend.service.AuthService;
 import com.backend.service.EmailSenderService;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -44,7 +43,7 @@ public class AuthController {
 
     }*/
     @PutMapping("/edit-user-settings")
-    public ResponseEntity<?> editUserSettings(@RequestBody UserDto userDto){
+    public ResponseEntity<?> editUserSettings(@RequestBody UtilisateurDto userDto){
         return ResponseEntity.ok(authService.editUserSettings(userDto));
 
     }
@@ -58,7 +57,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user){
+    public ResponseEntity<?> registerUser(@RequestBody Utilisateur user){
         return ResponseEntity.ok(authService.registerUser(user));
     }
     @PostMapping("/send-email")

@@ -1,0 +1,25 @@
+package com.backend.persistence.dto;
+
+import java.sql.Date;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.NonNull;
+import lombok.EqualsAndHashCode.Include;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
+public class InscriptionDto  implements Serializable {
+	private static final long serialVersionUID = 1L;
+	 
+    private Long id;
+    private Date date_inscription; 
+    private String mode_paiement;
+    private int montant_inscription;
+    private String nom_prenom_payeur;
+}

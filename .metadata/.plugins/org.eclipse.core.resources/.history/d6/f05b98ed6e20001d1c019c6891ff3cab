@@ -1,0 +1,14 @@
+package com.backend.persistence.dao;
+
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.backend.persistence.entities.Eleve;
+
+@Repository
+public interface EleveDAO extends PagingAndSortingRepository<Eleve, Long>{
+    Page<Eleve> findByIsDeletedIsFalse(Pageable pageable);
+}

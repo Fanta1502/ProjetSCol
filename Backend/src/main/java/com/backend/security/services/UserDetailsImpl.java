@@ -10,7 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.backend.persistence.entities.Role;
-import com.backend.persistence.entities.User;
+import com.backend.persistence.entities.Utilisateur;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserDetailsImpl implements UserDetails {
@@ -37,7 +37,7 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(User user) {
+    public static UserDetailsImpl build(Utilisateur user) {
         List<GrantedAuthority> authorities=new ArrayList<>();
         for (Role role : user.getRoles()) {
                 authorities.add(new SimpleGrantedAuthority(role.getName()));

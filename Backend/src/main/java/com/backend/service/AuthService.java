@@ -1,7 +1,6 @@
 package com.backend.service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -21,11 +20,10 @@ import com.backend.payload.request.LoginRequest;
 import com.backend.payload.response.JwtResponse;
 import com.backend.persistence.Constants.Constants;
 import com.backend.persistence.dao.RoleDAO;
-import com.backend.persistence.dao.UserDAO;
-import com.backend.persistence.dto.UserDto;
-import com.backend.persistence.entities.Role;
-import com.backend.persistence.entities.User;
-import com.backend.persistence.mappers.UserMapper;
+import com.backend.persistence.dao.UtilisateurDAO;
+import com.backend.persistence.dto.UtilisateurDto;
+import com.backend.persistence.entities.Utilisateur;
+import com.backend.persistence.mappers.UtilisateurMapper;
 import com.backend.security.jwt.JwtUtils;
 import com.backend.security.services.UserDetailsImpl;
 import com.backend.security.services.UserDetailsServiceImpl;
@@ -41,8 +39,8 @@ public class AuthService {
 	private String frontendUrl;
 	private final AuthenticationManager authenticationManager;
 
-	private final UserDAO userRepository;
-	private final UserMapper userMapper;
+	private final UtilisateurDAO userRepository;
+	private final UtilisateurMapper userMapper;
 
 	private final RoleDAO roleRepository;
 	private final UserDetailsServiceImpl userDetailsServiceImpl;
@@ -50,8 +48,8 @@ public class AuthService {
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public AuthService(AuthenticationManager authenticationManager, UserDAO userRepository,
-			UserMapper userMapper, RoleDAO roleRepository, UserDetailsServiceImpl userDetailsServiceImpl,
+	public AuthService(AuthenticationManager authenticationManager, UtilisateurDAO userRepository,
+			UtilisateurMapper userMapper, RoleDAO roleRepository, UserDetailsServiceImpl userDetailsServiceImpl,
 			JwtUtils jwtUtils, PasswordEncoder passwordEncoder) {
 		super();
 		this.authenticationManager = authenticationManager;
@@ -90,15 +88,15 @@ public class AuthService {
 
 	}
 
-	public UserDto editUserSettings(UserDto userBody) {
+	public UtilisateurDto editUserSettings(UtilisateurDto userBody) {
 		try {
-			User user = userRepository.findOneByIdAndIsDeletedIsFalse(userBody.getId());
-			user.setFirstName(userBody.getFirstName());
-			user.setLastName(userBody.getLastName());
+			Utilisateur user = userRepository.findOneByIdAndIsDeletedIsFalse(userBody.getId());
+			user.setNom(userBody.getNom());
+			user.setPrenom(userBody.getPrenom());
 			user.setProfilPicture(userBody.getProfilPicture());
 			user.setEmail(userBody.getEmail());
 			userRepository.saveAndFlush(user);
-			UserDto userDto = userMapper.fromEntityToDto(user);
+			UtilisateurDto userDto = userMapper.fromEntityToDto(user);
 			log.info("User (id={}) updated successfully", user.getId());
 			return userDto;
 		} catch (Exception e) {
@@ -108,10 +106,10 @@ public class AuthService {
 
 	}
 
-	public UserDto getUser(Long id) {
+	public UtilisateurDto getUser(Long id) {
 		try {
-			User user = userRepository.findOneByIdAndIsDeletedIsFalse(id);
-			UserDto userDto = userMapper.fromEntityToDto(user);
+			Utilisateur user = userRepository.findOneByIdAndIsDeletedIsFalse(id);
+			UtilisateurDto userDto = userMapper.fromEntityToDto(user);
 			log.info("User response successfully");
 			return userDto;
 		} catch (Exception e) {
@@ -121,10 +119,10 @@ public class AuthService {
 
 	}
 
-	public UserDto getUser(String mail) {
+	public UtilisateurDto getUser(String mail) {
 		try {
-			Optional<User> user = userRepository.findByEmailAndIsDeletedIsFalse(mail);
-			UserDto userDto = userMapper.fromEntityToDto(user.get());
+			Optional<Utilisateur> user = userRepository.findByEmailAndIsDeletedIsFalse(mail);
+			UtilisateurDto userDto = userMapper.fromEntityToDto(user.get());
 			log.info("User response successfully");
 			return userDto;
 		} catch (Exception e) {
@@ -134,15 +132,13 @@ public class AuthService {
 
 	}
 
-	public UserDto registerUser(User user) {
+	public UtilisateurDto registerUser(Utilisateur user) {
 		try {
-			List<Role> roles = new ArrayList<Role>();
-			Role role = roleRepository.findByName(Constants.Role.ROLE_CLIENT);
-			roles.add(role);
+			String role = Constants.Role.ROLE_CLIENT;
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			user.setRoles(roles);
+			user.setRole(role);
 			userRepository.save(user);
-			UserDto userDto = userMapper.fromEntityToDto(user);
+			UtilisateurDto userDto = userMapper.fromEntityToDto(user);
 			log.info("User added successfully");
 			return userDto;
 		} catch (Exception e) {
@@ -150,9 +146,9 @@ public class AuthService {
 			return null;
 		}
 	}
-	public UserDto forgotPassword(String email) {
+	public UtilisateurDto forgotPassword(String email) {
 		try {
-			User user = userRepository.findOneByEmailAndIsDeletedIsFalse(email);
+			Utilisateur user = userRepository.findOneByEmailAndIsDeletedIsFalse(email);
 			int leftLimit = 48;
 			int rightLimit = 122;
 			int targetStringLength = 16;
